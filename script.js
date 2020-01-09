@@ -1,4 +1,13 @@
-var questions = [
+var question = document.getElementById("question");
+var choices = document.getElementsByClassName("choice-text");
+
+
+
+
+
+
+
+var question = [
     {
       title: "Commonly used data types DO NOT include:",
       choices: ["strings", "booleans", "alerts", "numbers"],
@@ -32,4 +41,5 @@ var questions = [
       answer: "console.log"
     }
   ];
+
   

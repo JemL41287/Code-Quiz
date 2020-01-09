@@ -4,19 +4,16 @@
 
 .main {
     width: 50%;
-    text-align: center;
+    text-align: left;
     margin-top: 10%;
     margin-left: 25%;
 }
 
-p {
+h2 {
+    font-size: 20px;
     font-weight: bold;
-
 }
 
-.submit-btn {
-    color: white;
-    background-color: purple;
-    padding: 5px 5px 5px 5px;
-
+.choice-container {
+    line-height: 10px;
 }
