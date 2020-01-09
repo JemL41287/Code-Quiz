@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+}
+
+.main {
+    width: 50%;
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 25%;
+}
+
+p {
+    font-weight: bold;
+
+}
+
+.submit-btn {
+    color: white;
+    background-color: purple;
+
+}
