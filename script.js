@@ -52,6 +52,23 @@ var questions = [
   }
 ];
 
+function startGame() {
+  questionCounter = 0;
+  availableQuestions = [ ... questions];
+  console.log(availableQuestions);
+  getNewQuestion();
+};
+
+function getNewQuestion() {
+  questionCounter++;
+  var questionIndex = Math.floor(Math.random() * availableQuestions.length);
+  currentQuestion = availableQuestions[questionIndex];
+  question.innerText  = currentQuestion.question;
+
+};
+
+
+startGame();
 
 
 
