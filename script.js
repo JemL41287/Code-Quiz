@@ -65,10 +65,14 @@ function getNewQuestion() {
   currentQuestion = availableQuestions[questionIndex];
   question.innerText  = currentQuestion.question;
 
+  choices.forEach( function(choice) {
+    var number = choice.dataset['number'];
+    choice.innerText = currentQuestion['choice' + number];
+  });
+
 };
 
 
 startGame();
-
 
 
