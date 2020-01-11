@@ -55,14 +55,10 @@ var questions = [
   }
 ];
 
-function startScreen () {
-  quizScreen.setAttribute("hidden", true);
-}
 
 function startQuiz() {
   questionCounter = 0;
   availableQuestions = [...questions];
-  console.log(availableQuestions);
   getNewQuestion();
 };
 
@@ -74,7 +70,10 @@ function getNewQuestion() {
 
   choices.forEach(function (choice) {
     var number = choice.dataset["number"];
-    choice.innerText = currentQuestion["choice" + number];
+    var labelString = number.toString();
+
+    choice.innerText = labelString + ". " + currentQuestion["choice" + number];
+
   });
 };
 
