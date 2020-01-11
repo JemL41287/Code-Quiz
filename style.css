@@ -16,6 +16,18 @@
     margin-left: 25%;
 }
 
+#end-screen {
+    width: 50%;
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 25%;
+}
+
+.hide {
+    display: none;
+
+}
+
 .scores {
     position: absolute;
     top: 10px;
@@ -70,4 +82,19 @@ h2 {
 .incorrect {
     background-color: red;
 }
+
+#goback {
+    color: white;
+    background-color: purple;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+#clear {
+    color: white;
+    background-color: purple;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
 

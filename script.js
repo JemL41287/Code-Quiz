@@ -9,7 +9,7 @@ var availableQuestions = [];
 var startButton = document.getElementById("startgame");
 var startScreen = document.getElementById("main");
 var quizScreen = document.getElementById("quiz");
-var feedback = document.getElementById("feedback");
+var endScreen = document.getElementById("end-screen");
 
 
 var questions = [
@@ -59,6 +59,8 @@ var questions = [
 
 
 function startQuiz() {
+  startScreen.setAttribute("class", "hide");
+  quizScreen.removeAttribute("class");
   questionCounter = 0;
   availableQuestions = [...questions];
   getNewQuestion();
@@ -69,6 +71,7 @@ function getNewQuestion() {
   var questionIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionIndex];
   question.innerText = currentQuestion.question;
+
 
   choices.forEach(function (choice) {
     var number = choice.dataset["number"];
@@ -84,31 +87,38 @@ function getNewQuestion() {
 };
 
 choices.forEach(function (choice) {
-  choice.addEventListener("click", function(choice) {
+  choice.addEventListener("click", function (choice) {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
     var selectedChoice = choice.target;
     var selectedAnswer = selectedChoice.dataset["number"];
 
-    var classToApply = 
+    var classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-    
+
     selectedChoice.parentElement.classList.add(classToApply);
 
-    setTimeout(function() {
+    setTimeout(function () {
       selectedChoice.parentElement.classList.remove(classToApply);
       getNewQuestion();
     }, 1000);
-    
+
   });
+
 });
+
+function quizEnd() {
+  endScreen.removeAttribute("class");
+  quizScreen.setAttribute("class", "hide");
+}
 
 
 startButton.addEventListener("click", function () {
-  startScreen.setAttribute("hidden", true);
   startQuiz();
 });
+
+
 
 
 
