@@ -86,7 +86,7 @@ function getNewQuestion() {
   acceptingAnswers = true;
 };
 
-choices.forEach(function (choice) {
+choices.forEach(function (choice, i) {
   choice.addEventListener("click", function (choice) {
     if (!acceptingAnswers) return;
 
@@ -101,7 +101,11 @@ choices.forEach(function (choice) {
 
     setTimeout(function () {
       selectedChoice.parentElement.classList.remove(classToApply);
-      getNewQuestion();
+      if (questionCounter < questions.length) {
+        getNewQuestion();
+      } else {quizEnd()};
+      
+      
     }, 1000);
 
   });
