@@ -5,14 +5,14 @@
 #main {
     width: 50%;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 20%;
     margin-left: 25%;
 }
 
 #quiz {
     width: 50%;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 20%;
     margin-left: 25%;
 }
 
@@ -47,7 +47,7 @@ p {
 
 #startgame{
     color: white;
-    background-color: purple;
+    background-color: #4b0082;
     padding: 5px 5px 5px 5px;
     cursor: pointer;
 
@@ -65,6 +65,16 @@ h2 {
     line-height: 10px;
     text-align:left;
     padding-top: 5px;
+    border: solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border-width: 1px;
+    border-color: grey;
+}
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+
 }
 
 .choice-text {
@@ -76,25 +86,42 @@ h2 {
 }
 
 .correct {
-    background-color: green;
+    background-color: #228b22;
+    color: white;
 }
 
 .incorrect {
-    background-color: red;
+    background-color: #b22222;
+    color: white;
+}
+
+#end-screen {
+    width: 50%;
+    text-align: center;
+    margin-top: 20%;
+    margin-left: 25%;
 }
 
 #goback {
     color: white;
-    background-color: purple;
+    background-color: #4b0082;
     padding: 5px 5px 5px 5px;
     cursor: pointer;
 }
 
 #clear {
     color: white;
-    background-color: purple;
+    background-color: #4b0082;
     padding: 5px 5px 5px 5px;
     cursor: pointer;
+}
+
+#submit {
+    color: white;
+    background-color: #4b0082;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+
 }
 
 
