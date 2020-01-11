@@ -37,6 +37,7 @@ p {
     color: white;
     background-color: purple;
     padding: 5px 5px 5px 5px;
+    cursor: pointer;
 
 }
 
@@ -51,5 +52,22 @@ h2 {
     display: flex;
     line-height: 10px;
     text-align:left;
+    padding-top: 5px;
+}
+
+.choice-text {
+    display: flex;
+    font-weight: normal;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 5px 5px 5px;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
 }
 

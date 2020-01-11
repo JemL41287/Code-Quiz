@@ -1,5 +1,6 @@
 var question = document.getElementById("question");
 var choices = Array.from(document.getElementsByClassName("choice-text"));
+var timer = document.getElementById("time");
 var currentQuestion = {};
 var acceptingAnswers = true;
 var score = 0;
@@ -8,6 +9,7 @@ var availableQuestions = [];
 var startButton = document.getElementById("startgame");
 var startScreen = document.getElementById("main");
 var quizScreen = document.getElementById("quiz");
+var feedback = document.getElementById("feedback");
 
 
 var questions = [
@@ -75,7 +77,33 @@ function getNewQuestion() {
     choice.innerText = labelString + ". " + currentQuestion["choice" + number];
 
   });
+
+  availableQuestions.splice(questionIndex, 1);
+
+  acceptingAnswers = true;
 };
+
+choices.forEach(function (choice) {
+  choice.addEventListener("click", function(choice) {
+    if (!acceptingAnswers) return;
+
+    acceptingAnswers = false;
+    var selectedChoice = choice.target;
+    var selectedAnswer = selectedChoice.dataset["number"];
+
+    var classToApply = 
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+    
+    selectedChoice.parentElement.classList.add(classToApply);
+
+    setTimeout(function() {
+      selectedChoice.parentElement.classList.remove(classToApply);
+      getNewQuestion();
+    }, 1000);
+    
+  });
+});
+
 
 startButton.addEventListener("click", function () {
   startScreen.setAttribute("hidden", true);
