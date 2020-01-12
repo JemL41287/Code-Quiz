@@ -121,7 +121,23 @@ h2 {
     background-color: #4b0082;
     padding: 5px 5px 5px 5px;
     cursor: pointer;
-
 }
+
+ol {
+    padding-left: 0px;
+    max-height: 400px;
+    overflow: auto;
+  }
+  
+  li {
+    padding: 5px;
+    list-style: decimal inside none;
+  }
+
+  li:nth-child(odd) {
+    background-color: #f3edfc;
+  }
+  
+  
 
 

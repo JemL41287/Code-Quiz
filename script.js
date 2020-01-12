@@ -1,6 +1,8 @@
 var question = document.getElementById("question");
 var choices = Array.from(document.getElementsByClassName("choice-text"));
 var timer = document.getElementById("time");
+var timerInterval;
+var secondsLeft = 75;
 var currentQuestion = {};
 var acceptingAnswers = true;
 var score = 0;
@@ -10,6 +12,9 @@ var startButton = document.getElementById("startgame");
 var startScreen = document.getElementById("main");
 var quizScreen = document.getElementById("quiz");
 var endScreen = document.getElementById("end-screen");
+var finalScore = document.getElementById("final-score");
+var yourInitials = document.getElementById("initials");
+var submitBtn = document.getElementById("submit");
 
 
 var questions = [
@@ -64,7 +69,26 @@ function startQuiz() {
   questionCounter = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+  setTime();
 };
+
+function setTime() {
+  timerInterval = setInterval(function() {
+
+
+    if(secondsLeft <= 0) {
+      timer.texContent = 0;
+      clearInterval(timerInterval);
+      quizEnd();
+      secondsLeft = 0;
+    } else {
+      secondsLeft--;
+      timer.textContent = "Time: " + secondsLeft};
+
+  }, 1000);
+
+
+}
 
 function getNewQuestion() {
   questionCounter++;
@@ -96,6 +120,9 @@ choices.forEach(function (choice, i) {
 
     var classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+      if (classToApply === "incorrect") {
+        secondsLeft -= 15
+      };
 
     selectedChoice.parentElement.classList.add(classToApply);
 
@@ -104,8 +131,7 @@ choices.forEach(function (choice, i) {
       if (questionCounter < questions.length) {
         getNewQuestion();
       } else {quizEnd()};
-      
-      
+       
     }, 1000);
 
   });
@@ -115,12 +141,43 @@ choices.forEach(function (choice, i) {
 function quizEnd() {
   endScreen.removeAttribute("class");
   quizScreen.setAttribute("class", "hide");
+  clearInterval(timerInterval);
+  finalScore.textContent = secondsLeft;
+  
 }
 
+function saveHighscore() {
+  var initials = yourInitials.value.trim();
+
+  if (initials !== "") {
+    var highscores =
+      JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    var newScore = {
+      score: time,
+      initials: initials
+    };
+
+    highscores.push(newScore);
+    window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+    window.location.href = "highscores.html";
+  }
+}
+
+function checkForEnter(event) {
+  if (event.key === "Enter") {
+    saveHighscore();
+  }
+}
+
+submitBtn.onclick = saveHighscore;
 
 startButton.addEventListener("click", function () {
   startQuiz();
 });
+
+initialsEl.onkeyup = checkForEnter;
 
 
 
