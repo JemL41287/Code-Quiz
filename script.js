@@ -75,8 +75,7 @@ function startQuiz() {
 function setTime() {
   timerInterval = setInterval(function() {
 
-
-    if(secondsLeft <= 0) {
+    if (secondsLeft <= 0) {
       timer.texContent = 0;
       clearInterval(timerInterval);
       quizEnd();
@@ -142,6 +141,7 @@ function quizEnd() {
   endScreen.removeAttribute("class");
   quizScreen.setAttribute("class", "hide");
   clearInterval(timerInterval);
+  //Seconds left defined above also?
   finalScore.textContent = secondsLeft;
   
 }
