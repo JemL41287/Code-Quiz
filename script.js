@@ -1,5 +1,5 @@
 var question = document.getElementById("question");
-var choices = Array.from(document.getElementsByClassName("choice-text"));
+var choices = Array.from(document.getElementsByClassName("choice-container"));
 var timer = document.getElementById("time");
 var timerInterval;
 var secondsLeft = 75;
@@ -79,7 +79,7 @@ function setTime() {
       timer.texContent = 0;
       clearInterval(timerInterval);
       quizEnd();
-      secondsLeft = 0;
+      // secondsLeft = 0;
     } else {
       secondsLeft--;
       timer.textContent = "Time: " + secondsLeft};
@@ -111,22 +111,31 @@ function getNewQuestion() {
 
 choices.forEach(function (choice, i) {
   choice.addEventListener("click", function (choice) {
+    
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
     var selectedChoice = choice.target;
+    
     var selectedAnswer = selectedChoice.dataset["number"];
 
     var classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
       if (classToApply === "incorrect") {
         secondsLeft -= 15
+        console.log("secs left", secondsLeft);
+        if(secondsLeft < 14) {
+          var timerText = timer.textContent.substring(5,8);
+          finalScore = timerText;
+          console.log("final score", finalScore);
+        }
+
       };
 
-    selectedChoice.parentElement.classList.add(classToApply);
+    selectedChoice.classList.add(classToApply);
 
     setTimeout(function () {
-      selectedChoice.parentElement.classList.remove(classToApply);
+      selectedChoice.classList.remove(classToApply);
       if (questionCounter < questions.length) {
         getNewQuestion();
       } else {quizEnd()};
@@ -141,8 +150,9 @@ function quizEnd() {
   endScreen.removeAttribute("class");
   quizScreen.setAttribute("class", "hide");
   clearInterval(timerInterval);
-  //Seconds left defined above also?
-  finalScore.textContent = secondsLeft;
+  console.log("down here", finalScore)
+  document.getElementById("final-score").innerHTML= finalScore;
+
   
 }
 
@@ -154,7 +164,7 @@ function saveHighscore() {
       JSON.parse(window.localStorage.getItem("highscores")) || [];
 
     var newScore = {
-      score: time,
+      score: finalScore,
       initials: initials
     };
 
@@ -177,12 +187,4 @@ startButton.addEventListener("click", function () {
   startQuiz();
 });
 
-initialsEl.onkeyup = checkForEnter;
-
-
-
-
-
-
-
-
+yourInitials.onkeyup = checkForEnter;

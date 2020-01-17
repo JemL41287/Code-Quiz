@@ -64,23 +64,19 @@ h2 {
     display: flex;
     line-height: 10px;
     text-align:left;
-    padding-top: 5px;
+    padding-top: 5px 5px 5px 5px;
     border: solid grey;
     border-radius: 5px;
     margin-bottom: 5px;
     border-width: 1px;
+    padding: 10px 10px 10px 10px;
+
 
 }
 .choice-container:hover {
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
 
-}
-
-.choice-text {
-    display: flex inline-block;
-    font-weight: normal;
-    padding: 5px 5px 5px 5px;
 }
 
 .correct {
