@@ -127,14 +127,6 @@ choices.forEach(function (choice, i) {
         
         secondsLeft -= 15
         console.log("secs left", secondsLeft);
-        //if(secondsLeft < 0) {
-         // secondsLeft = 0;
-          //var timerText = timer.textContent.substring(5,8);
-          //finalScore.textContent = secondsLeft;
-          //console.log("final score", finalScore);
-        //}
-        
-
       };
 
     selectedChoice.classList.add(classToApply);
