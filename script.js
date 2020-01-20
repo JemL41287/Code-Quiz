@@ -74,12 +74,14 @@ function startQuiz() {
 
 function setTime() {
   timerInterval = setInterval(function() {
+    console.log(secondsLeft);
 
     if (secondsLeft <= 0) {
       timer.texContent = 0;
       clearInterval(timerInterval);
+      secondsLeft = 0;
+      timer.textContent = "Time: " + secondsLeft;
       quizEnd();
-      // secondsLeft = 0;
     } else {
       secondsLeft--;
       timer.textContent = "Time: " + secondsLeft};
@@ -122,13 +124,16 @@ choices.forEach(function (choice, i) {
     var classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
       if (classToApply === "incorrect") {
+        
         secondsLeft -= 15
         console.log("secs left", secondsLeft);
-        if(secondsLeft < 14) {
-          var timerText = timer.textContent.substring(5,8);
-          finalScore = timerText;
-          console.log("final score", finalScore);
-        }
+        //if(secondsLeft < 0) {
+         // secondsLeft = 0;
+          //var timerText = timer.textContent.substring(5,8);
+          //finalScore.textContent = secondsLeft;
+          //console.log("final score", finalScore);
+        //}
+        
 
       };
 
@@ -150,8 +155,8 @@ function quizEnd() {
   endScreen.removeAttribute("class");
   quizScreen.setAttribute("class", "hide");
   clearInterval(timerInterval);
-  console.log("down here", finalScore)
-  document.getElementById("final-score").innerHTML= finalScore;
+  console.log("down here", secondsLeft)
+  document.getElementById("final-score").innerHTML = secondsLeft;
 
   
 }
@@ -164,7 +169,7 @@ function saveHighscore() {
       JSON.parse(window.localStorage.getItem("highscores")) || [];
 
     var newScore = {
-      score: finalScore,
+      score: secondsLeft,
       initials: initials
     };
 
