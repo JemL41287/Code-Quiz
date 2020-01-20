@@ -3,7 +3,7 @@
 
 Overview:
 
-In this assignment, the challenge was to create an interactive multiple choice question quiz. From scratch, the quiz must be timer-based and stores high scores in local storage.
+In this assignment, the challenge was to create an interactive multiple choice question quiz. The quiz must be timer-based and store high scores in local storage.
 
 Utilizing the App:
 
